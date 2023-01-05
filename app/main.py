@@ -1,7 +1,6 @@
 import os
 import platform
 
-from sys import argv
 from time import sleep
 from datetime import datetime
 from work_with_datas import data_read_from_file, data_write_file
@@ -24,6 +23,7 @@ def ping() -> None:
                 ip["status"] = "OFF"
             elif percent_loss <= 99:
                 ip["status"] = "NEED CHECK"
+                print(ip)
             else:
                 ip["status"] = "ON"
 
