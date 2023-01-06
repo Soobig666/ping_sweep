@@ -1,12 +1,9 @@
 from datas import data_read_from_file, data_write_file
 from typing import Any
-
+from main import ping
+from sys import exit
 
 work = True
-
-
-# def question() -> Any:
-#     global work
 
 
 def check_command(read: str) -> Any:
@@ -24,6 +21,18 @@ def check_command(read: str) -> Any:
             work = False
         elif read == "print":
             print_info()
+        elif read == "ping":
+            start_ping()
+        elif read == "stop":
+            exit()
+
+
+def start_ping() -> Any:
+    try:
+        ping()
+    except IndexError:
+        print("\nError, stop scanning")
+        exit()
 
 
 def add_info() -> Any:
@@ -40,7 +49,6 @@ def upd_info(ip_address: str) -> Any:
     load_info = data_read_from_file()
     for user in load_info:
         if user["ip_address"] == ip_address:
-            dict_index = load_info.index(user)
 
             while True:
                 chose = input("\nip_address/name/stop ")
@@ -76,14 +84,16 @@ def del_info(ip_address: str) -> Any:
 
 def print_info() -> Any:
     for line_upd in data_read_from_file():
+        print("\n")
         print(line_upd, end="\n")
+    exit()
 
 
 if __name__ == '__main__':
     try:
         while True:
             print("\n")
-            info_from_terminal = check_command(input("Chose command: add/upd/del/print \n"))
+            info_from_terminal = check_command(input("Chose command: add/upd/del/print/ping \n"))
     except KeyboardInterrupt:
         print("\n")
         print("Program has STOP by user!")
