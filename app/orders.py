@@ -5,15 +5,14 @@ from typing import Any
 work = True
 
 
-def question() -> Any:
-    global work
+# def question() -> Any:
+#     global work
 
 
 def check_command(read: str) -> Any:
     global work
     work = True
     while work:
-
         if read == "upd":
             upd_info(input("Enter IP to change: "))
             work = False
@@ -23,6 +22,8 @@ def check_command(read: str) -> Any:
         elif read == "add":
             add_info()
             work = False
+        elif read == "print":
+            print_info()
 
 
 def add_info() -> Any:
@@ -36,6 +37,7 @@ def add_info() -> Any:
 
 
 def upd_info(command: str) -> Any:
+
     pass
 
 
