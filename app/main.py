@@ -1,7 +1,6 @@
-import os
-import platform
-import threading
-from sys import argv
+from os import popen
+from platform import system
+from random import shuffle
 
 from time import sleep
 from datetime import datetime
@@ -13,19 +12,21 @@ def ping() -> None:
     try:
         while True:
             file = data_read_from_file()
-            op_system = platform.system()
-            ping_command = "ping -n 2 " if op_system == "Windows" else "ping -c 2 "
+            shuffle(file)
+            op_system = system()
+            ping_command = "ping -n 5 " if op_system == "Windows" else "ping -c 5 "
             time_before = datetime.now()
             print("\n")
             print("SCAN IP START ON " + str(time_before))
 
             for ip in file:
                 command = ping_command + ip["ip_address"]
-                response = os.popen(command)
-                percent_loss = read_from_console(response.readlines())
+                response = popen(command)
+                response_answer = response.readlines()
+                percent_loss = read_from_console(response_answer)
                 if percent_loss == 100:
                     ip["status"] = "OFF"
-                elif percent_loss <= 99:
+                elif percent_loss >= 99:
                     ip["status"] = "NEED CHECK"
                     print(ip)
                 else:
@@ -42,6 +43,4 @@ def ping() -> None:
 
 
 if __name__ == '__main__':
-    # temp = input(argv)
-    # print(temp)
     ping()
