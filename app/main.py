@@ -40,6 +40,7 @@ def ping() -> None:
     except KeyboardInterrupt:
         print("\n")
         print("SCANNING IS STOP!")
+        exit()
 
 
 if __name__ == '__main__':

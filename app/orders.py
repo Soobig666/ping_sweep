@@ -21,6 +21,7 @@ def check_command(read: str) -> Any:
             work = False
         elif read == "print":
             print_info()
+            work = False
         elif read == "ping":
             start_ping()
         elif read == "stop":
@@ -79,21 +80,21 @@ def del_info(ip_address: str) -> Any:
             data_write_file(load_info)
             print("\nDelete was successful!")
             break
-    print(f"\nAfter check {ip_address} is not found!")
+        print(f"\nAfter check {ip_address} is not found!")
 
 
 def print_info() -> Any:
-    for line_upd in data_read_from_file():
-        print("\n")
-        print(line_upd, end="\n")
-    exit()
+    for _ in range(1):
+        for line_upd in data_read_from_file():
+            print("\n")
+            print(line_upd, end="\n")
 
 
 if __name__ == '__main__':
     try:
         while True:
             print("\n")
-            info_from_terminal = check_command(input("Chose command: add/upd/del/print/ping \n"))
+            info_from_terminal = check_command(input("Chose command: add/upd/del/print/ping/stop \n"))
     except KeyboardInterrupt:
         print("\n")
         print("Program has STOP by user!")
