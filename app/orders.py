@@ -94,7 +94,7 @@ if __name__ == '__main__':
     try:
         while True:
             print("\n")
-            info_from_terminal = check_command(input("Chose command: add/upd/del/print/ping/stop \n"))
+            check_command(input("Chose command: add/upd/del/print/ping/stop \n"))
     except KeyboardInterrupt:
         print("\n")
         print("Program has STOP by user!")

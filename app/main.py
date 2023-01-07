@@ -1,8 +1,8 @@
 from os import popen
 from platform import system
 from random import shuffle
-
 from time import sleep
+
 from datetime import datetime
 from datas import data_read_from_file, data_write_file
 from check_packet_loss import read_from_console
@@ -41,7 +41,3 @@ def ping() -> None:
         print("\n")
         print("SCANNING IS STOP!")
         exit()
-
-
-if __name__ == '__main__':
-    ping()
