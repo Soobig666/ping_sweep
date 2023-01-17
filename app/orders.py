@@ -1,6 +1,6 @@
 from datas import data_read_from_file, data_write_file
 from typing import Any
-from main import ping
+from ping import ping
 from sys import exit
 
 work = True
@@ -90,7 +90,7 @@ def print_info() -> Any:
             print(line_upd, end="\n")
 
 
-if __name__ == '__main__':
+def write_command() -> None:
     try:
         while True:
             print("\n")
@@ -98,3 +98,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print("\n")
         print("Program has STOP by user!")
+
+
+if __name__ == '__main__':
+    write_command()
